@@ -30,20 +30,20 @@
 
 	// mouse pointer gradient
 	function changePointerLocation(e) {
-		const x = e.pageX;
-		const y = e.pageY;
-		if (
-			!(
-				'ontouchstart' in window ||
-				navigator.maxTouchPoints > 0 ||
-				navigator.msMaxTouchPoints > 0
-			) &&
-			`${window.innerWidth}` >= fullConfig.theme.screens.lg
-		) {
-			radialPointer.style = `background: radial-gradient(600px at ${x}px ${y}px, ${fullConfig.theme.colors.primary}, transparent 80%); opacity: 0.1`;
-		} else {
-			radialPointer.style = '';
-		}
+		// const x = e.pageX;
+		// const y = e.pageY;
+		// if (
+		// 	!(
+		// 		'ontouchstart' in window ||
+		// 		navigator.maxTouchPoints > 0 ||
+		// 		navigator.msMaxTouchPoints > 0
+		// 	) &&
+		// 	`${window.innerWidth}` >= fullConfig.theme.screens.lg
+		// ) {
+		// 	radialPointer.style = `background: radial-gradient(600px at ${x}px ${y}px, ${fullConfig.theme.colors.primary}, transparent 80%); opacity: 0.1`;
+		// } else {
+		// 	radialPointer.style = '';
+		// }
 	}
 
 	// onMount(() => {
@@ -58,7 +58,6 @@
 		bind:this={radialPointer}
 		role="none"
 		class="pointer-events-none fixed inset-0 z-30 transition duration-300 lg:absolute"
-		style="background: radial-gradient(600px at 0px 0px, rgba(29, 78, 216, 0.15), transparent 80%);"
 	/>
 
 	<!-- skip to main content -->

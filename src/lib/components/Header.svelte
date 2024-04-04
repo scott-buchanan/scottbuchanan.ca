@@ -42,8 +42,9 @@
 	}
 
 	onMount(() => {
-		const hash = window.location.hash.split('#')[1] || '';
+		const hash = window.location.hash.split('#')[1] || 'about';
 		linkClick(hash);
+		$$props.sections[hash].scrollIntoView();
 	});
 </script>
 
