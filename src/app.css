@@ -5,7 +5,7 @@
 @layer base {
 	@font-face {
 		font-family: 'motiva-sans';
-		src: local('motiva'), local('motiva-sans'), url('$lib/assets/fonts/MotivaSans-bold.otf');
+		src: local('motiva'), local('motiva-sans'), url('./lib/assets/fonts/MotivaSans-bold.otf');
 		font-weight: normal;
 		font-display: swap;
 	}
