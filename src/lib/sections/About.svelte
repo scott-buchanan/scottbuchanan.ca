@@ -1,11 +1,13 @@
 <script>
 	import { onMount } from 'svelte';
 	import { addSectionToStore } from '$lib/utils.js';
+	// components
 	import Link from '../components/Link.svelte';
 
 	const currentYear = new Date().getFullYear();
 	const experienceYears = currentYear - 2008;
 	const sectionId = 'about';
+
 	let sectionElement;
 
 	onMount(() => {
@@ -31,25 +33,26 @@
 	</div>
 
 	<p class="pb-3">
-		With over {experienceYears} years of experience,
-		<Link value="javascript" />
-		has been my playground for a while now. Whether coding in vanilla JS, creating efficient, reusable
-		components in
+		I am a full-stack web developer with over {experienceYears} years experience who has a passion for
+		front-end web development.
+	</p>
+	<p class="pb-3">
+		Whether coding in vanilla <Link value="javascript" />, creating efficient, reusable components
+		in
 		<Link value="vuejs" />,
-		<Link value="svelte" />, and
+		<Link value="svelte" />, or
 		<Link value="react" /> using the latest JavaScript features and functions, or staying up to date
 		with the latest innovations, I'm constantly honing my skills and learning new things.
 	</p>
 
 	<p class="pb-3">
-		Alongside my love for unraveling complex logic puzzles in JS, I have an equal passion for
-		perfecting pixel-perfect designs. <Link value="css" /> captivate me with their ability to transform
-		concepts into visually stunning realities. There's a unique satisfaction in sculpting interfaces
-		and seeing ideas come to life with every line of code.
+		I have an equal passion for implementing pixel-perfect designs. I love <Link value="css" /> and I
+		love the challenge of transforming designs into reality on screen. There's a unique satisfaction
+		in sculpting interfaces and seeing ideas come to life with every line of code.
 	</p>
 
 	<p class="pb-3">
-		When I'm not coding, I'm either running around after members of my growing family, cooking up a
-		storm in the kitchen, or if it's summertime you can find me at the campground.
+		When I'm not coding, I enjoy spending time with my family, taking leisurely strolls outdoors
+		with our dogs, and playing the occasional video game.
 	</p>
 </section>

@@ -44,7 +44,7 @@
 				class="inline-flex items-center leading-tight font-semibold group text-slate-800 hover:text-slate-800 focus:text-slate-800 dark:text-slate-200 dark:hover:text-slate-200 dark:focus:text-slate-200 transition-colors"
 				aria-label="View Full Résumé"
 				href={resume}
-				target="blank"
+				target="_blank"
 			>
 				<span>
 					<span

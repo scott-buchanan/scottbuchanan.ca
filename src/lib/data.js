@@ -6,23 +6,22 @@ import ifhp from '$lib/assets/images/ifhp.webp';
 export const name = 'Scott Buchanan';
 export const title = 'Full-stack Web Developer';
 export const blurb =
-	"I'm passionate about designing cutting-edge, pixel-perfect, visually captivating interfaces while seamlessly integrating user-friendly, intuitive UX.";
+	"I'm passionate about creating cutting-edge, pixel-perfect, visually captivating interfaces while seamlessly integrating user-friendly, intuitive UX.";
 
 export const skills = [
 	{
 		key: 'javascript',
 		text: 'JavaScript',
 		link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
-		weight: 10
+		weight: 10,
+		language: true
 	},
-	{ key: 'react', text: 'React', link: 'https://reactjs.org/', weight: 9 },
-	{ key: 'vuejs', text: 'Vue.js', link: 'https://vuejs.org/', weight: 9 },
-	{ key: 'svelte', text: 'Svelte', link: 'https://svelte.dev/', weight: 9 },
+	{ key: 'react', text: 'React', link: 'https://reactjs.org/', weight: 9, language: true },
+	{ key: 'vuejs', text: 'Vue.js', link: 'https://vuejs.org/', weight: 9, language: true },
+	{ key: 'svelte', text: 'Svelte', link: 'https://svelte.dev/', weight: 9, language: true },
 	{ key: 'sveltekit', text: 'SvelteKit', link: 'https://kit.svelte.dev/', weight: 8 },
 	{ key: 'tailwind', text: 'Tailwind CSS', link: 'https://tailwindcss.com/', weight: 8 },
 	{ key: 'typescript', text: 'TypeScript', link: 'https://www.typescriptlang.org/', weight: 8 },
-	{ key: 'php', text: 'PHP', link: 'https://www.php.net/', weight: 7 },
-	{ key: 'twig', text: 'TWIG', link: 'https://twig.symfony.com/', weight: 6 },
 	{ key: 'sass', text: 'SCSS', link: 'https://sass-lang.com/', weight: 7 },
 	{ key: 'css', text: 'CSS', link: 'https://developer.mozilla.org/en-US/docs/Web/CSS', weight: 7 },
 	{
@@ -32,6 +31,9 @@ export const skills = [
 		weight: 7
 	},
 	{ key: 'bootstrap', text: 'Bootstrap', link: 'https://getbootstrap.com/', weight: 6 },
+	{ key: 'jquery', text: 'jQuery', link: 'https://jquery.com/', weight: 6, language: true },
+	{ key: 'php', text: 'PHP', link: 'https://www.php.net/', weight: 6, language: true },
+	{ key: 'twig', text: 'TWIG', link: 'https://twig.symfony.com/', weight: 6, language: true },
 	{ key: 'quasar', text: 'Quasar', link: 'https://quasar.dev/', weight: 6 },
 	{ key: 'openvidu', text: 'openVidu', link: 'https://openvidu.io/', weight: 6 },
 	{ key: 'storybook', text: 'Storybook', link: 'https://storybook.js.org/', weight: 6 },
@@ -45,6 +47,7 @@ export const skills = [
 	{ key: 'yarn', text: 'Yarn', link: 'https://yarnpkg.com/', weight: 5 },
 	{ key: 'pnpm', text: 'PNPM', link: 'https://pnpm.io/', weight: 5 },
 	{ key: 'nodejs', text: 'Node.js', link: 'https://nodejs.org/', weight: 5 },
+	{ key: 'python', text: 'Python', link: 'https://www.python.org/', weight: 5 },
 	{ key: 'redux', text: 'Redux', link: 'https://redux.js.org/', weight: 5 },
 	{ key: 'webpack', text: 'Webpack', link: 'https://webpack.js.org/', weight: 5 },
 	{ key: 'vite', text: 'Vite', link: 'https://vitejs.dev/', weight: 5 },
@@ -62,11 +65,9 @@ export const skills = [
 	{ key: 'github', text: 'GitHub', link: 'https://github.com/', weight: 4 },
 	{ key: 'git', text: 'Git', link: 'https://git-scm.com/', weight: 4 },
 	{ key: 'gitlab', text: 'GitLab', link: 'https://about.gitlab.com/', weight: 4 },
-	{ key: 'jquery', text: 'jQuery', link: 'https://jquery.com/', weight: 4 },
 	{ key: 'wordpress', text: 'WordPress', link: 'https://wordpress.org/', weight: 4 },
 	{ key: 'vscode', text: 'Visual Studio Code', link: 'https://code.visualstudio.com/', weight: 3 },
 	{ key: 'linux', text: 'Linux', link: 'https://www.linux.org/', weight: 3 },
-	{ key: 'python', text: 'Python', link: 'https://www.python.org/', weight: 3 },
 	{ key: 'sql', text: 'SQL', link: 'https://www.w3schools.com/sql/', weight: 3 },
 	{ key: 'vercel', text: 'Vercel', link: 'https://vercel.com/', weight: 3 },
 	{ key: 'xml', text: 'XML', link: 'https://www.w3schools.com/xml/', weight: 3 },
@@ -117,7 +118,8 @@ export const work = [
 					'npm',
 					'yarn',
 					'jira',
-					'storybook'
+					'storybook',
+					'jquery'
 				].includes(item.key)
 			)
 			.sort((a, b) => b.weight - a.weight)
@@ -214,15 +216,6 @@ export const projects = [
 			.sort((a, b) => b.weight - a.weight)
 	},
 	{
-		title: 'Interim Federal Health Program',
-		website: 'https://ifhp.medaviebc.ca/en/',
-		description: "Built using Craft CMS (PHP), Twig templates, Bootstrap, and Google Maps API's",
-		image: ifhp,
-		skills: skills
-			.filter((item) => ['craftcms', 'twig', 'php', 'bootstrap', 'googlemaps'].includes(item.key))
-			.sort((a, b) => b.weight - a.weight)
-	},
-	{
 		title: 'Sketchspace',
 		website: 'https://sketchspace.ca',
 		description: 'Built using React, Styled Components, and openVidu API',
@@ -234,5 +227,23 @@ export const projects = [
 				)
 			)
 			.sort((a, b) => b.weight - a.weight)
+	},
+	{
+		title: 'Interim Federal Health Program',
+		website: 'https://ifhp.medaviebc.ca/en/',
+		description:
+			"Built using Craft CMS (PHP), Twig templates, Bootstrap, and jQuery using Google Maps API's",
+		image: ifhp,
+		// different sorting here. Want languages on top.
+		skills: skills
+			.filter((item) =>
+				['php', 'twig', 'bootstrap', 'sass', 'googlemaps', 'craftcms', 'jquery'].includes(item.key)
+			)
+			.sort((a, b) => {
+				if (a.language === b.language) {
+					return b.weight - a.weight;
+				}
+				return a.language ? -1 : 1;
+			})
 	}
 ];

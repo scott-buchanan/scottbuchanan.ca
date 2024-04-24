@@ -4,6 +4,10 @@
 	let skill = skills.find((item) => item.key === $$props.value) || { link: '#', text: 'Error' };
 </script>
 
-<a href={skill.link} target="blank" class="font-medium text-slate-800 dark:text-slate-200">
+<a
+	href={skill.link}
+	target="_blank"
+	class="font-medium text-slate-800 dark:text-slate-200 transition-colors duration-100"
+>
 	{skill.text}
 </a>
