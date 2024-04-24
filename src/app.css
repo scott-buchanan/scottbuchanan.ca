@@ -13,6 +13,6 @@
 	}
 
 	a {
-		@apply hover:text-light-secondary focus:text-light-secondary hover:dark:text-dark-secondary focus:dark:text-dark-secondary;
+		@apply hover:text-light-secondary focus:text-light-secondary dark:hover:text-dark-secondary dark:focus:text-dark-secondary;
 	}
 }

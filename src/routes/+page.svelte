@@ -64,11 +64,11 @@
 
 <svelte:window on:mousemove={changePointerLocation} on:mousewheel={changePointerLocation} />
 
-<div class="flex leading-relaxed text-slate-600 dark:text-slate-400 antialiased">
+<div class="flex leading-relaxed text-slate-600 dark:text-slate-400 antialiased font-light">
 	<!-- skip to main content -->
 	<a
 		href="#about"
-		class="text-light-secondary dark:text-dark-secondary border-solid border border-light-secondary dark:border-dark-secondary absolute text-center left-[50%] top-5 block -translate-y-40 -translate-x-[50%] rounded-full bg-white/10 px-3 py-1 text-xs font-medium leading-5 text-secondary border-secondary focus-visible:translate-y-0"
+		class="text-light-secondary dark:text-dark-secondary border-solid border border-light-secondary dark:border-dark-secondary absolute text-center left-[50%] top-5 block -translate-y-40 -translate-x-[50%] rounded-full bg-white/10 px-3 py-1 text-xs leading-5 text-secondary border-secondary focus-visible:translate-y-0"
 	>
 		Skip to Content
 	</a>
@@ -108,10 +108,9 @@
 
 				<Projects />
 
-				<footer class="text-xs max-w-md pb-16 sm:pb-0">
+				<footer class="text-sm max-w-md pb-16 sm:pb-0">
 					<p>
-						Built using <Link value="sveltekit" /> and styled with <Link value="tailwind" />, coded
-						in
+						Built using <Link value="sveltekit" />, styled with <Link value="tailwind" />, coded in
 						<Link value="vscode" />, and deployed using <Link value="vercel" />.
 					</p>
 				</footer>
