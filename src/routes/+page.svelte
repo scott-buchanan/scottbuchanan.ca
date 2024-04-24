@@ -56,7 +56,9 @@
 
 <svelte:window on:mousemove={changePointerLocation} on:mousewheel={changePointerLocation} />
 
-<div class="flex leading-relaxed text-slate-600 dark:text-slate-400 antialiased font-light">
+<div
+	class="relative flex leading-relaxed text-slate-600 dark:text-slate-400 antialiased font-light"
+>
 	<!-- skip to main content -->
 	<a
 		href="#about"
@@ -69,7 +71,7 @@
 	<div
 		bind:this={radialPointer}
 		role="none"
-		class="pointer-events-none fixed inset-0 z-30 transition duration-300 lg:absolute opacity-10"
+		class="pointer-events-none inset-0 transition duration-300 fixed lg:absolute opacity-10"
 	/>
 
 	<div
