@@ -3,10 +3,16 @@
 @tailwind utilities;
 
 @layer base {
-	@font-face {
-		font-family: 'motiva-sans';
-		src: local('motiva'), local('motiva-sans'), url('./lib/assets/fonts/MotivaSans-bold.otf');
-		font-weight: normal;
-		font-display: swap;
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-display font-extrabold;
+	}
+
+	a {
+		@apply hover:text-light-secondary focus:text-light-secondary hover:dark:text-dark-secondary focus:dark:text-dark-secondary;
 	}
 }

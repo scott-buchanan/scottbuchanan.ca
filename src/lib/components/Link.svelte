@@ -1,24 +1,9 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
+	import { skills } from '$lib/data.js';
 
-	const dispatch = createEventDispatcher();
-
-	function handleClick(event) {
-		dispatch('click', event);
-	}
+	let skill = skills.find((item) => item.key === $$props.value) || { link: '#', text: 'Error' };
 </script>
 
-<a href={`#${$$props.value}`} class="group flex items-center py-3" on:click={handleClick}>
-	<span
-		class="{$$props.active
-			? 'w-10 bg-primary'
-			: 'w-6 bg-dark'} transition-all nav-indicator mr-4 h-px group-hover:w-10 group-hover:bg-primary group-focus-visible:w-10 group-focus-visible:bg-primary motion-reduce:transition-none"
-	/>
-	<span
-		class="{$$props.active
-			? 'text-primary font-black'
-			: 'text-dark'} transition-all nav-text text-xs font-bold uppercase tracking-widest group-hover:text-primary group-focus-visible:text-primary"
-	>
-		{$$props.text}
-	</span>
+<a href={skill.link} target="blank" class="font-semibold">
+	{skill.text}
 </a>
