@@ -19,7 +19,6 @@
 	let sections;
 	let radialPointer;
 	let siteInfo;
-	// let activeIndicator;
 
 	storeSiteInfo.subscribe((value) => {
 		siteInfo = value;
@@ -29,16 +28,9 @@
 		sections = value;
 		const activeId = value.find((item) => item.active === true)?.id;
 		if (activeId) updateDocumentTitle(activeId);
-		// active indicator. Unsure if I like this, tabling for now
-		// const activeSection = sections?.find((item) => item.active === true)?.element;
-		// if (activeSection && activeIndicator) {
-		// 	const scrollTop = window?.scrollY || document?.documentElement.scrollTop;
-		// 	activeIndicator.style = `top: ${activeSection.getBoundingClientRect().top + scrollTop}px; height: ${activeSection.offsetHeight}px`;
-		// 	activeIndicator.classList.remove('md:hidden');
-		// }
 	});
 
-	// mouse pointer gradient
+	// cursor gradient
 	function changePointerLocation(e) {
 		if (localStorage.getItem('theme') === 'dark') {
 			const { pageX, pageY } = e;
@@ -73,7 +65,7 @@
 		Skip to Content
 	</a>
 
-	<!-- pointer hover thing? -->
+	<!-- cursor gradient dark mode -->
 	<div
 		bind:this={radialPointer}
 		role="none"
@@ -90,18 +82,6 @@
 				class="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24"
 			/>
 			<main id="content" class="relative pt-24 lg:w-1/2 lg:py-24">
-				<!-- tabling this for now. section active indicator -->
-				<!-- <div
-					bind:this={activeIndicator}
-					class="hidden lg:inline-block absolute h-full w-full bg-secondaryy opacity-30 transition-all"
-				>
-					<div class="relative h-full w-full">
-						<div class="flex flex-col justify-center h-full w-full -ml-24">
-							<iconify-icon icon="ri:arrow-right-wide-fill" width="5em" height="5em" />
-						</div>
-					</div>
-				</div> -->
-
 				<About />
 
 				<Experience />
