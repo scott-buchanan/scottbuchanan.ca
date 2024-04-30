@@ -8,6 +8,34 @@ export const title = 'Full-stack Web Developer';
 export const blurb =
 	"I'm passionate about creating cutting-edge, pixel-perfect, visually captivating interfaces while seamlessly integrating user-friendly, intuitive UX.";
 
+export const links = [
+	{
+		text: 'Email',
+		link: 'mailto:scottbuchanan20@gmail.com',
+		icon: 'mdi:email'
+	},
+	{
+		text: 'Linked In',
+		link: 'https://www.linkedin.com/in/scottbuchanan',
+		icon: 'fa-brands:linkedin-in'
+	},
+	{
+		text: 'Github',
+		link: 'https://github.com/scott-buchanan',
+		icon: 'fa-brands:github'
+	},
+	{
+		text: 'CodePen',
+		link: 'https://codepen.io/scottbuchanan',
+		icon: 'fa-brands:codepen'
+	},
+	{
+		text: 'Goodreads',
+		link: 'https://www.goodreads.com/scottbuchanan',
+		icon: 'fa-brands:goodreads'
+	}
+];
+
 export const skills = [
 	{
 		key: 'javascript',

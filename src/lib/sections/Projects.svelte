@@ -8,6 +8,7 @@
 	let sectionElement;
 
 	onMount(() => {
+		console.log('add projects');
 		addSectionToStore({
 			id: sectionId,
 			element: sectionElement

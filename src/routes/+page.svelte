@@ -1,8 +1,13 @@
 <script>
+	import { onMount } from 'svelte';
 	import resolveConfig from 'tailwindcss/resolveConfig';
 	import tailwindConfig from '../../tailwind.config.js';
 	// store
-	import { sections as storeSections, siteInfo as storeSiteInfo } from '$lib/store.js';
+	import {
+		sections as storeSections,
+		siteInfo as storeSiteInfo,
+		containerElement as storeContainerElement
+	} from '$lib/store.js';
 	// sections
 	import About from '../lib/sections/About.svelte';
 	import Projects from '../lib/sections/Projects.svelte';
@@ -16,6 +21,7 @@
 
 	const { theme } = resolveConfig(tailwindConfig);
 
+	let containerElement;
 	let sections;
 	let radialPointer;
 	let siteInfo;
@@ -26,7 +32,7 @@
 
 	storeSections.subscribe((value) => {
 		sections = value;
-		const activeId = value.find((item) => item.active === true)?.id;
+		const activeId = sections?.find((item) => item.active === true)?.id;
 		if (activeId) updateDocumentTitle(activeId);
 	});
 
@@ -48,6 +54,10 @@
 			}
 		}
 	}
+
+	onMount(() => {
+		storeContainerElement.update(() => containerElement);
+	});
 </script>
 
 <svelte:head>
@@ -57,7 +67,8 @@
 <svelte:window on:mousemove={changePointerLocation} on:mousewheel={changePointerLocation} />
 
 <div
-	class="relative flex leading-relaxed text-slate-600 dark:text-slate-400 antialiased font-light"
+	bind:this={containerElement}
+	class="relative flex leading-relaxed text-slate-600 dark:text-slate-300/80 transition-colors"
 >
 	<!-- skip to main content -->
 	<a

@@ -1,5 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
+	// store
+	import { containerElement as storeContainerElement } from '$lib/store.js';
 	// assets
 	import resume from '$lib/assets/Scott-Buchanan.pdf';
 	// data
@@ -13,6 +15,7 @@
 	let sectionElement;
 
 	onMount(() => {
+		console.log('add experience');
 		addSectionToStore({
 			id: sectionId,
 			element: sectionElement

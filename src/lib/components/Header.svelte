@@ -1,7 +1,6 @@
 <script>
-	import { onMount } from 'svelte';
-	import resolveConfig from 'tailwindcss/resolveConfig';
-	import tailwindConfig from '/tailwind.config.js';
+	import { onMount, tick, afterUpdate } from 'svelte';
+	import { page } from '$app/stores';
 	// store
 	import { sections as storeSections } from '$lib/store.js';
 	// components
@@ -10,67 +9,60 @@
 	// data
 	import { name, title, blurb } from '$lib/data.js';
 
-	const { theme } = resolveConfig(tailwindConfig);
-
 	let sections;
-	let hash;
+	let pageLoaded = false;
+	let clicked = false;
+	let active;
 
+	// reactive declaration for url hash
+	$: hash = $page.url.hash.replace('#', '');
+
+	// subscribe to section store
 	storeSections.subscribe((value) => {
 		sections = value;
-		if (sections) sections.find((item) => item.active === true)?.element.scrollIntoView();
-	});
 
-	function linkClick(link) {
-		storeSections.update((s) =>
-			s.map((item) => {
-				item.active = item.id === link;
-				return item;
-			})
-		);
-	}
-
-	function linkScroll() {
-		const isElementVisible = (element) => {
-			const rect = element.getBoundingClientRect(),
-				windowHeight = window.innerHeight;
-			return (
-				rect.top >= 0 &&
-				rect.left >= 0 &&
-				rect.bottom <= windowHeight &&
-				rect.right <= window.innerWidth
-			);
-		};
-
-		let activeSection = sections.find((item) => {
-			if (isElementVisible(item.element)) return item;
-		});
-
-		linkClick(activeSection?.id);
-	}
-
-	function updateHash() {
-		if (window.innerWidth >= Number(theme.screens.lg.replace('px', ''))) {
-			console.log(`${window.innerWidth}`, theme.screens.lg);
-			hash = window.location.hash.slice(1);
+		// page load logic
+		if (pageLoaded === false && sections.length === 3) {
+			pageLoaded = true;
+			console.log('clicked', hash);
 			linkClick(hash || 'about');
 		}
+	});
+
+	async function linkClick(link) {
+		console.log('clicked TRUE');
+		clicked = true;
+		active = link;
+		console.log(sections.find((section) => section.id === link));
+		sections.find((section) => section.id === link).element.scrollIntoView();
 	}
 
-	onMount(() => {
-		// Update hash when the hash changes
-		window.addEventListener('hashchange', updateHash());
+	function handleScroll() {
+		// page scroll logic because observer callback updates sections store
+		// if (pageLoaded === true && sections.length === 3) {
+		// clicked = true;
+		console.log('SCROOOOLLLL');
+		if (!clicked) {
+			let mostVisible = sections[0];
+			sections.forEach((section) => {
+				if (section.percentVisible > mostVisible.percentVisible) {
+					mostVisible = section;
+				}
+			});
+			active = mostVisible.id;
+		}
+		// }
+	}
 
-		// Initial hash value
-		updateHash();
-
-		// Cleanup when the component is destroyed
-		return () => {
-			window.removeEventListener('hashchange', updateHash);
-		};
-	});
+	// fires when scrolling stops
+	function handleScrollEnd() {
+		console.log('page loaded ', pageLoaded);
+		console.log('clicked FALSE');
+		clicked = false;
+	}
 </script>
 
-<svelte:window on:mousewheel={linkScroll} />
+<svelte:window on:scroll={handleScroll} on:scrollend={handleScrollEnd} />
 
 <header class={$$props.class}>
 	<div class="pr-6 sm:pr-0">
@@ -84,10 +76,11 @@
 		<nav class="nav hidden lg:block" aria-label="In-page jump links">
 			<ul class="mt-16 w-max">
 				<li>
+					clicked: {clicked}
 					{#each sections as section}
 						<HeaderLink
 							value={section.id}
-							active={section.active}
+							active={section.id === active}
 							on:click={() => linkClick(section.id)}
 						/>
 					{/each}

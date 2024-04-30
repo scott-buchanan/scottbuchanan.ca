@@ -11,6 +11,7 @@
 	let sectionElement;
 
 	onMount(() => {
+		console.log('add about');
 		addSectionToStore({
 			id: sectionId,
 			element: sectionElement
