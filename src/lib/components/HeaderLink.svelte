@@ -1,18 +1,11 @@
 <script>
-	import { createEventDispatcher, afterUpdate } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 
 	const dispatch = createEventDispatcher();
-
-	let animate = false;
 
 	function handleClick(event) {
 		dispatch('click', event);
 	}
-
-	afterUpdate(() => {
-		// enable transition after page load
-		if (animate === false) animate = true;
-	});
 </script>
 
 <a href={`#${$$props.value}`} class="group flex items-center py-3" on:click={handleClick}>

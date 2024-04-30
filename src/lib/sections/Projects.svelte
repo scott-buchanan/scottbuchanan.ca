@@ -1,8 +1,8 @@
 <script>
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import { projects } from '../data';
 	import Card from '../components/Card.svelte';
-	import { addSectionToStore } from '$lib/utils.js';
+	import { addSectionToStore, removeObserver } from '$lib/utils.js';
 
 	const sectionId = 'projects';
 	let sectionElement;
@@ -13,6 +13,10 @@
 			id: sectionId,
 			element: sectionElement
 		});
+	});
+
+	onDestroy(() => {
+		removeObserver(sectionElement);
 	});
 </script>
 

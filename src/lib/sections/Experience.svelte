@@ -1,5 +1,5 @@
 <script>
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	// store
 	import { containerElement as storeContainerElement } from '$lib/store.js';
 	// assets
@@ -9,7 +9,7 @@
 	// components
 	import Card from '../components/Card.svelte';
 	// utils
-	import { addSectionToStore } from '$lib/utils.js';
+	import { addSectionToStore, removeObserver } from '$lib/utils.js';
 
 	const sectionId = 'experience';
 	let sectionElement;
@@ -20,6 +20,10 @@
 			id: sectionId,
 			element: sectionElement
 		});
+	});
+
+	onDestroy(() => {
+		removeObserver(sectionElement);
 	});
 </script>
 

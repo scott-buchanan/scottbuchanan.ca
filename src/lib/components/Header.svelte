@@ -1,5 +1,5 @@
 <script>
-	import { onMount, tick, afterUpdate } from 'svelte';
+	import { afterUpdate } from 'svelte';
 	import { page } from '$app/stores';
 	// store
 	import { sections as storeSections } from '$lib/store.js';
@@ -13,6 +13,8 @@
 	let pageLoaded = false;
 	let clicked = false;
 	let active;
+	let isScrolling;
+	let scrollingTimeout;
 
 	// reactive declaration for url hash
 	$: hash = $page.url.hash.replace('#', '');
@@ -20,28 +22,19 @@
 	// subscribe to section store
 	storeSections.subscribe((value) => {
 		sections = value;
-
-		// page load logic
-		if (pageLoaded === false && sections.length === 3) {
-			pageLoaded = true;
-			console.log('clicked', hash);
-			linkClick(hash || 'about');
-		}
 	});
 
 	async function linkClick(link) {
-		console.log('clicked TRUE');
 		clicked = true;
 		active = link;
-		console.log(sections.find((section) => section.id === link));
 		sections.find((section) => section.id === link).element.scrollIntoView();
 	}
 
 	function handleScroll() {
+		isScrolling = true;
+		clearTimeout(scrollingTimeout);
+
 		// page scroll logic because observer callback updates sections store
-		// if (pageLoaded === true && sections.length === 3) {
-		// clicked = true;
-		console.log('SCROOOOLLLL');
 		if (!clicked) {
 			let mostVisible = sections[0];
 			sections.forEach((section) => {
@@ -51,15 +44,25 @@
 			});
 			active = mostVisible.id;
 		}
-		// }
+
+		scrollingTimeout = setTimeout(() => (isScrolling = false), 100);
 	}
 
-	// fires when scrolling stops
-	function handleScrollEnd() {
-		console.log('page loaded ', pageLoaded);
-		console.log('clicked FALSE');
-		clicked = false;
+	async function handleScrollEnd() {
+		// this check is needed because scrollend is fired when the link is clicked, before scroll
+		if (pageLoaded && isScrolling) {
+			console.log('fire scroll end');
+			clicked = false;
+		}
 	}
+
+	afterUpdate(() => {
+		// page load logic
+		if (pageLoaded === false && sections.length === 3) {
+			pageLoaded = true;
+			linkClick(hash || 'about');
+		}
+	});
 </script>
 
 <svelte:window on:scroll={handleScroll} on:scrollend={handleScrollEnd} />

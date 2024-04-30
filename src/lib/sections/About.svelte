@@ -1,6 +1,6 @@
 <script>
-	import { onMount } from 'svelte';
-	import { addSectionToStore } from '$lib/utils.js';
+	import { onMount, onDestroy } from 'svelte';
+	import { addSectionToStore, removeObserver } from '$lib/utils.js';
 	// components
 	import Link from '../components/Link.svelte';
 
@@ -16,6 +16,10 @@
 			id: sectionId,
 			element: sectionElement
 		});
+	});
+
+	onDestroy(() => {
+		removeObserver(sectionElement);
 	});
 </script>
 
