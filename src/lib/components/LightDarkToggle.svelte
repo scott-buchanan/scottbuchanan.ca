@@ -14,10 +14,13 @@
 	};
 
 	function applyViewMode() {
-		const browserDefault = window.matchMedia('(prefers-color-scheme: dark)').matches;
+		const browserDefaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 		const docClasses = document.documentElement.classList;
 
-		if (localStorage.theme === 'dark' || (!('theme' in localStorage) && browserDefault)) {
+		if (
+			localStorage.getItem('theme') === 'dark' ||
+			(!('theme' in localStorage) && browserDefaultDark)
+		) {
 			docClasses.add('dark');
 			isDarkmode = true;
 		} else {
@@ -25,14 +28,15 @@
 			isDarkmode = false;
 		}
 
-		if (!localStorage.theme) {
-			localStorage.theme = browserDefault ? 'dark' : 'light';
+		if (!localStorage.getItem('theme')) {
+			localStorage.setItem('theme', browserDefaultDark ? 'dark' : 'light');
 		}
 	}
 
 	function toggleTheme() {
-		localStorage.theme = localStorage.theme === 'light' ? 'dark' : 'light';
-		buttonClickCount++;
+		localStorage.setItem('theme', localStorage.getItem('theme') === 'light' ? 'dark' : 'light');
+
+		buttonClickCount = 1;
 		applyViewMode();
 	}
 
@@ -46,7 +50,7 @@
 	class="fixed top-3 right-1 sm:top-4 sm:right-4 z-30"
 	aria-label={isDarkmode ? 'Switch to light mode' : 'Switch to dark mode'}
 >
-	{#key buttonClickCount}
+	{#key isDarkmode}
 		<iconify-icon icon={icon()} width="2em" height="2em" />
 	{/key}
 </button>

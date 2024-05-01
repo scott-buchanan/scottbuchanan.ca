@@ -38,19 +38,21 @@
 
 	// cursor gradient
 	function changePointerLocation(e) {
-		if (localStorage.getItem('theme') === 'dark') {
-			const { pageX, pageY } = e;
-			if (
-				!(
-					'ontouchstart' in window ||
-					navigator.maxTouchPoints > 0 ||
-					navigator.msMaxTouchPoints > 0
-				) &&
-				`${window.innerWidth}` >= theme.screens.lg
-			) {
-				radialPointer.style = `background: radial-gradient(600px at ${pageX}px ${pageY}px, ${theme.colors.primary}, transparent 80%);`;
-			} else {
-				radialPointer.style = '';
+		if (window.innerWidth < Number(theme.screens.lg.replace('px', ''))) {
+			radialPointer.style = '';
+		} else {
+			if (localStorage.getItem('theme') === 'dark') {
+				const { pageX, pageY } = e;
+				if (
+					!(
+						'ontouchstart' in window ||
+						navigator.maxTouchPoints > 0 ||
+						navigator.msMaxTouchPoints > 0
+					) &&
+					`${window.innerWidth}` >= theme.screens.lg
+				) {
+					radialPointer.style = `background: radial-gradient(600px at ${pageX}px ${pageY}px, ${theme.colors.primary}, transparent 80%);`;
+				}
 			}
 		}
 	}

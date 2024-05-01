@@ -23,29 +23,16 @@ export function addObserver(sectionElement) {
 	observedElements.set(sectionElement, sectionElement);
 }
 
-// const observerCallback = (entries) => {
-// 	sections.update((s) => {
-// 		return s.map((item) => {
-// 			if (item.id === entries[0].target.id) {
-// 				item.percentVisible = Math.floor(entries[0].intersectionRatio * 100);
-// 			}
-// 			return item;
-// 		});
-// 	});
-// };
-
 function observerCallback(entries) {
 	entries.forEach((entry) => {
-		if (observedElements.has(entry.target)) {
-			sections.update((s) => {
-				return s.map((item) => {
-					if (item.id === entries[0].target.id) {
-						item.percentVisible = Math.floor(entries[0].intersectionRatio * 100);
-					}
-					return item;
-				});
+		sections.update((s) => {
+			return s.map((item) => {
+				if (item.id === entry.target.id) {
+					item.percentVisible = Math.floor(entry.intersectionRatio * 100);
+				}
+				return item;
 			});
-		}
+		});
 	});
 }
 
