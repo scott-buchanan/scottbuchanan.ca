@@ -1,4 +1,6 @@
-Built using Svelte with Tailwind
 
-pnpm i
-pnpm dev
+# Built using Svelte with Tailwind
+
+
+- pnpm i
+- pnpm dev
