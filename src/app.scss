@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-display font-extrabold transition-colors;
+	}
+
+	a,
+	button {
+		@apply inline-flex hover:text-light-secondary dark:hover:text-dark-secondary transition-colors;
+		&:focus-visible {
+			@apply text-light-secondary dark:text-dark-secondary rounded-sm outline outline-2 outline-light-secondary dark:outline-dark-secondary outline-offset-2 transition-opacity;
+		}
+	}
+
+	p {
+		@apply transition-colors;
+	}
+}

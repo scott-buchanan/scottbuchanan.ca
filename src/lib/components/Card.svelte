@@ -1,18 +1,7 @@
 <script>
 	import { fade, fly } from 'svelte/transition';
 
-	export let info = {
-		dates: {
-			to: null,
-			from: null
-		},
-		website: null,
-		title: null,
-		company: null,
-		description: null,
-		skills: [],
-		image: null
-	};
+	export let info;
 
 	let shortList = true;
 	let skillsList = info.skills.slice(0, 3);
@@ -33,23 +22,23 @@
 		class="group relative grid pb-1 sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50"
 	>
 		<div
-			class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/5 dark:lg:group-hover:bg-white/10 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"
+			class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-900/5 dark:lg:group-hover:bg-white/10 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"
 		/>
 
 		{#if info.image}
 			<img
-				alt=""
+				alt={`Small screenshot of ${info.title}`}
 				loading="lazy"
 				width="200"
 				height="48"
 				decoding="async"
-				class="rounded border-2 border-slate-800/10 dark:border-slate-200/10 transition group-hover:border-slate-800/30 dark:group-hover:border-slate-200/30 order-3 sm:order-1 sm:col-span-2 sm:translate-y-1 mt-5 sm:mt-0"
+				class="rounded border-2 border-slate-900/10 dark:border-slate-200/10 transition group-hover:border-slate-900/30 dark:group-hover:border-slate-200/30 order-3 sm:order-1 sm:col-span-2 sm:translate-y-1 mt-5 sm:mt-0"
 				style="color:transparent"
 				src={info.image}
 			/>
 		{:else}
 			<header
-				class="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide sm:col-span-2"
+				class="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide sm:col-span-2 transition-colors"
 				aria-label={`${info.dates.from} to ${info.dates.to}`}
 			>
 				{info.dates.from} — {info.dates.to}
@@ -58,9 +47,15 @@
 
 		<div class="z-10 sm:col-span-6 sm:order-2">
 			<div class="group/card-link">
-				<a href={info.website} target="_blank" rel="noreferrer" aria-label={info.title}>
+				<a
+					href={info.website}
+					target="_blank"
+					rel="noreferrer"
+					aria-label={info.title}
+					class="group/card-a"
+				>
 					<h3
-						class="text-slate-800 dark:text-slate-200 transition-colors group-hover/card-link:text-light-secondary dark:group-hover/card-link:text-dark-secondary font-medium leading-tight"
+						class="text-slate-900 dark:text-slate-200 group-focus-visible/card-a:transition-none group-focus-visible/card-a:text-light-secondary dark:group-focus-visible/card-a:text-dark-secondary transition-colors group-hover/card-link:text-light-secondary dark:group-hover/card-link:text-dark-secondary font-medium leading-tight"
 					>
 						<span
 							class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"

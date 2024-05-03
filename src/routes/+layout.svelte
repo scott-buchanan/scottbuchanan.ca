@@ -1,7 +1,7 @@
 <script>
 	import 'iconify-icon';
 	import '@fontsource-variable/inter';
-	import '../app.css';
+	import '../app.scss';
 </script>
 
 <svelte:head>

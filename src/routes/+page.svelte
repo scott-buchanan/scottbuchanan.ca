@@ -70,12 +70,12 @@
 
 <div
 	bind:this={containerElement}
-	class="relative flex leading-relaxed text-slate-600 dark:text-slate-300/80 transition-colors"
+	class="relative flex leading-relaxed text-slate-600 dark:text-slate-300/80"
 >
 	<!-- skip to main content -->
 	<a
 		href="#about"
-		class="text-light-secondary dark:text-dark-secondary border-solid border border-light-secondary dark:border-dark-secondary absolute text-center left-[50%] top-5 block -translate-y-40 -translate-x-[50%] rounded-full bg-white/10 px-3 py-1 text-xs leading-5 text-secondary border-secondary focus-visible:translate-y-0"
+		class="absolute text-center font-semibold left-[50%] top-5 block -translate-y-40 -translate-x-[50%] rounded-full bg-slate-900/10 dark:bg-white/10 px-3 py-1 text-xs leading-5 text-secondary border-secondary focus-visible:translate-y-0"
 	>
 		Skip to Content
 	</a>
@@ -93,10 +93,9 @@
 		<LightDarkToggle />
 
 		<div class="lg:flex lg:justify-between lg:gap-4">
-			<Header
-				class="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24"
-			/>
-			<main id="content" class="relative pt-24 lg:w-1/2 lg:py-24">
+			<Header />
+
+			<main class="relative pt-24 lg:w-1/2 lg:py-24">
 				<About />
 
 				<Experience />

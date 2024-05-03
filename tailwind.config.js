@@ -8,14 +8,15 @@ export default {
 	theme: {
 		fontFamily: {
 			sans: '"Inter Variable", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
-			display: ['"Inter Variable", sans-serif', {}]
+			display: ['"Inter Variable", sans-serif']
 		},
 		extend: {
 			colors: {
 				primary: '#287fbf',
 				'dark-secondary': '#ec8574',
 				'light-secondary': '#e8403b',
-				'light-background': '#ededed'
+				'light-background': '#ededed',
+				'bg-dark': 'bg-slate-900'
 			},
 			keyframes: {
 				animateArrowOut: {

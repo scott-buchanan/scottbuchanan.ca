@@ -6,7 +6,7 @@ import ifhp from '$lib/assets/images/ifhp.webp';
 export const name = 'Scott Buchanan';
 export const title = 'Full-stack Web Developer';
 export const blurb =
-	"I'm passionate about creating cutting-edge, pixel-perfect, visually captivating interfaces while seamlessly integrating user-friendly, intuitive UX.";
+	"I'm passionate about creating pixel-perfect, visually captivating, accessible interfaces while seamlessly integrating user-friendly, intuitive user experiences.";
 
 export const links = [
 	{

@@ -12,6 +12,7 @@
 	import { addSectionToStore, removeObserver } from '$lib/utils.js';
 
 	const sectionId = 'experience';
+	const resumeText = 'View Full Résumé (PDF)';
 	let sectionElement;
 
 	onMount(() => {
@@ -34,7 +35,7 @@
 	aria-label={sectionId}
 >
 	<div
-		class="lg:hidden sticky top-0 z-20 -mx-6 mb-16 w-screen bg-light-background/50 dark:bg-slate-800/50 transition-colors px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0"
+		class="lg:hidden sticky top-0 z-20 -mx-6 mb-16 w-screen bg-light-background/50 dark:bg-slate-900/50 transition-colors px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0"
 	>
 		<h2 class="text-sm font-bold uppercase tracking-widest lg:sr-only">
 			{sectionId}
@@ -48,25 +49,19 @@
 		</ol>
 		<div class="mt-12">
 			<a
-				class="inline-flex items-center leading-tight font-semibold group text-slate-800 hover:text-slate-800 focus:text-slate-800 dark:text-slate-200 dark:hover:text-slate-200 dark:focus:text-slate-200 transition-colors"
-				aria-label="View Full Résumé"
-				href={resume}
+				class="group leading-tight font-semibold text-slate-900 dark:text-slate-200 transition-colors focus-visible:text-light-secondary dark:focus-visible:text-dark-secondary"
+				aria-label=""
+				href={resumeText}
 				target="_blank"
 			>
-				<span>
-					<span
-						class="border-b border-transparent pb-px group-hover:border-light-secondary dark:group-hover:border-dark-secondary motion-reduce:transition-none"
-					>
-						View Full Résumé
-					</span>
-					<iconify-icon
-						icon="material-symbols:arrow-right-alt-rounded"
-						width="1.4em"
-						height="1.4em"
-						class="inline-block h-4 w-4 shrink-0 -translate-y-px transition-transform group-hover:translate-x-2 group-focus-visible:translate-x-2 motion-reduce:transition-none"
-						aria-hidden="true"
-					/>
-				</span>
+				{resumeText}
+				<iconify-icon
+					icon="material-symbols:arrow-right-alt-rounded"
+					width="1.4em"
+					height="1.4em"
+					class="inline-block h-4 w-4 shrink-0 -translate-y-px transition-transform group-hover:translate-x-1 motion-reduce:transition-none"
+					aria-hidden="true"
+				/>
 			</a>
 		</div>
 	</div>
