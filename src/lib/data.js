@@ -211,29 +211,29 @@ export const work = [
 ];
 
 export const projects = [
-	{
-		title: 'Trakt TV and Movie client',
-		website: 'https://github.com/scott-buchanan/trakt-vue-ts',
-		description:
-			"Built using Vue.js, TypeScript, SCSS, Quasar framework, and multiple API's (Trakt, TMDB, OMDb, Fanart.tv).",
-		image: traktVue,
-		skills: skills
-			.filter((item) =>
-				[
-					'vuejs',
-					'typescript',
-					'pnpm',
-					'quasar',
-					'sass',
-					'vite',
-					'trakt',
-					'tmdb',
-					'omdb',
-					'fanart'
-				].includes(item.key)
-			)
-			.sort((a, b) => b.weight - a.weight)
-	},
+	// {
+	// 	title: 'Trakt TV and Movie client',
+	// 	website: 'https://github.com/scott-buchanan/trakt-vue-ts',
+	// 	description:
+	// 		"Built using Vue.js, TypeScript, SCSS, Quasar framework, and multiple API's (Trakt, TMDB, OMDb, Fanart.tv).",
+	// 	image: traktVue,
+	// 	skills: skills
+	// 		.filter((item) =>
+	// 			[
+	// 				'vuejs',
+	// 				'typescript',
+	// 				'pnpm',
+	// 				'quasar',
+	// 				'sass',
+	// 				'vite',
+	// 				'trakt',
+	// 				'tmdb',
+	// 				'omdb',
+	// 				'fanart'
+	// 			].includes(item.key)
+	// 		)
+	// 		.sort((a, b) => b.weight - a.weight)
+	// },
 	{
 		title: 'Member Services Site',
 		website: 'https://members.medaviebc.ca',
