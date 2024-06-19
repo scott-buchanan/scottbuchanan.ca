@@ -51,7 +51,7 @@
 			<a
 				class="group leading-tight font-semibold text-slate-900 dark:text-slate-200 transition-colors focus-visible:text-light-secondary dark:focus-visible:text-dark-secondary"
 				aria-label=""
-				href={resumeText}
+				href={resume}
 				target="_blank"
 			>
 				{resumeText}
