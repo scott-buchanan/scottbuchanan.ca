@@ -1,5 +1,6 @@
 <script>
 	import { fade, fly } from 'svelte/transition';
+	import LinkModal from './LinkModal.svelte';
 
 	export let info;
 
@@ -47,13 +48,7 @@
 
 		<div class="z-10 sm:col-span-6 sm:order-2">
 			<div class="group/card-link">
-				<a
-					href={info.website}
-					target="_blank"
-					rel="noreferrer"
-					aria-label={info.title}
-					class="group/card-a"
-				>
+				<LinkModal {info}>
 					<h3
 						class="text-slate-900 dark:text-slate-200 group-focus-visible/card-a:transition-none group-focus-visible/card-a:text-light-secondary dark:group-focus-visible/card-a:text-dark-secondary transition-colors group-hover/card-link:text-light-secondary dark:group-hover/card-link:text-dark-secondary font-medium leading-tight"
 					>
@@ -81,7 +76,7 @@
 							/>
 						</span>
 					</h3>
-				</a>
+				</LinkModal>
 				{#if Array.isArray(info.description)}
 					{#each info.description as paragraph}
 						<p class="mt-2 text-sm leading-normal">

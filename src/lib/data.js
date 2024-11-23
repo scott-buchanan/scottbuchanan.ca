@@ -245,8 +245,11 @@ export const projects = [
 	},
 	{
 		title: 'Sketchspace',
-		website: 'https://sketchspace.ca',
+		website: null,
 		description: 'Built using React, Styled Components, and openVidu API',
+		modal: {
+			description: 'SketchSpace was Canada\'s first virtual rehearsal hall, though it is no longer an active project and the website is now offline. Designed as a web app to help theatre creators rehearse, experiment, and collaborate remotely, it was originally developed in 2015 and relaunched during the COVID-19 pandemic. It provided tools for exploring movement, objects, and performance ideas in a digital environment. As the developer of the relaunched version of SketchSpace, I created the platform using React and the OpenVidu API, enabling seamless real-time collaboration. The app was built to inspire creators of all levels to push the boundaries of their craft through innovative digital experimentation.',
+		},
 		image: sketchspace,
 		skills: skills
 			.filter((item) =>
